@@ -2,7 +2,7 @@
 FROM vertx/vertx3
 
 ENV VERTICLE_NAME VertX
-ENV VERTICLE_FILE target/vertx-1.0-SNAPSHOT.jar
+ENV VERTICLE_FILE target/vertx-1.0.jar
 
 # Set the location of the verticles
 ENV VERTICLE_HOME /usr/verticles
