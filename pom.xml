@@ -10,13 +10,19 @@
 
     <properties>
         <!-- the main verticle class name -->
-        <main.verticle>VertX</main.verticle>
+        <main.verticle>verticles.VertX</main.verticle>
+        <main.verticle.web>verticles.VertXWeb</main.verticle.web>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-core</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web</artifactId>
             <version>3.4.2</version>
         </dependency>
     </dependencies>
@@ -33,16 +39,17 @@
             </plugin>
 
             <!--
-    You only need the part below if you want to build your application into a fat executable jar.
-    This is a jar that contains all the dependencies required to run it, so you can just run it with
-    java -jar
-    -->
+            You only need the part below if you want to build your application into a fat executable jar.
+            This is a jar that contains all the dependencies required to run it, so you can just run it with
+            java -jar
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.3</version>
                 <executions>
                     <execution>
+                        <id>core</id>
                         <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
@@ -62,6 +69,29 @@
                             <artifactSet>
                             </artifactSet>
                             <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>web</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <Main-Class>io.vertx.core.Launcher</Main-Class>
+                                        <Main-Verticle>${main.verticle.web}</Main-Verticle>
+                                    </manifestEntries>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/services/io.vertx.core.spi.VerticleFactory</resource>
+                                </transformer>
+                            </transformers>
+                            <artifactSet>
+                            </artifactSet>
+                            <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-web-fat.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>

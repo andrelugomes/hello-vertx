@@ -1,3 +1,4 @@
+package verticles;
 
 import io.vertx.core.AbstractVerticle;
 
@@ -11,6 +12,8 @@ public class VertX extends AbstractVerticle {
 
     @Override
     public void start() throws Exception {
+
+        //CORE SAMPLE
         vertx.createHttpServer().requestHandler(request -> {
             request.response().end("Hello Java world !");
         }).listen(8080);
