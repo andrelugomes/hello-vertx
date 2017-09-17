@@ -1,9 +1,8 @@
-package handles;
+package vertx.web.sample.verticles.product.handle;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import io.vertx.core.Handler;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
@@ -15,7 +14,7 @@ import io.vertx.ext.web.RoutingContext;
  *          $Id: $
  * @since 9/15/17 3:05 PM
  */
-public class ProductHandler implements Handler<RoutingContext> {
+public class ProductHandler {
 
     private static Map<String, JsonObject> products = new HashMap<>();
 
@@ -69,10 +68,5 @@ public class ProductHandler implements Handler<RoutingContext> {
         addProduct(new JsonObject().put("id", "prod3568").put("name", "Egg Whisk").put("price", 3.99).put("weight", 150));
         addProduct(new JsonObject().put("id", "prod7340").put("name", "Tea Cosy").put("price", 5.99).put("weight", 100));
         addProduct(new JsonObject().put("id", "prod8643").put("name", "Spatula").put("price", 1.00).put("weight", 80));
-    }
-
-    @Override
-    public void handle(final RoutingContext routingContext) {
-
     }
 }

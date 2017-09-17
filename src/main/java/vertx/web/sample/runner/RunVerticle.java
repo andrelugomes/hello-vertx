@@ -1,7 +1,7 @@
-package runner;
+package vertx.web.sample.runner;
 
 import io.vertx.core.VertxOptions;
-import verticles.VertXWeb;
+import vertx.web.sample.verticles.VertxWebMainVerticle;
 
 /**
  * @author s2it_agomes
@@ -11,9 +11,8 @@ import verticles.VertXWeb;
  */
 public class RunVerticle {
 
-    // Convenience method so you can run it in your IDE
     public static void main(String[] args) {
-        Runner.run("/src/main/java/", VertXWeb.class, new VertxOptions().setClustered(false), null);
+        Runner.run("/src/main/java/", VertxWebMainVerticle.class, new VertxOptions().setClustered(false), null);
     }
 
 }

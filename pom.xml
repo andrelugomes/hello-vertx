@@ -10,8 +10,8 @@
 
     <properties>
         <!-- the main verticle class name -->
-        <main.verticle>verticles.VertX</main.verticle>
-        <main.verticle.web>verticles.VertXWeb</main.verticle.web>
+        <main.verticle>vertx.core.sample.verticles.Vertx</main.verticle>
+        <main.verticle.web>vertx.web.sample.verticles.VertxWebMainVerticle</main.verticle.web>
     </properties>
 
     <dependencies>
@@ -23,6 +23,11 @@
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-web</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web-client</artifactId>
             <version>3.4.2</version>
         </dependency>
     </dependencies>
@@ -68,7 +73,7 @@
                             </transformers>
                             <artifactSet>
                             </artifactSet>
-                            <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
+                            <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-core-fat.jar</outputFile>
                         </configuration>
                     </execution>
                     <execution>
