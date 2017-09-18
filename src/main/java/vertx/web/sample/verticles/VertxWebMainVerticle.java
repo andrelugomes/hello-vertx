@@ -1,6 +1,10 @@
 package vertx.web.sample.verticles;
 
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.CompositeFuture;
+import io.vertx.core.DeploymentOptions;
+import io.vertx.core.Future;
+import io.vertx.ext.web.Router;
 import vertx.web.sample.verticles.http.client.HttpClientVerticle;
 import vertx.web.sample.verticles.product.ProductVerticle;
 
@@ -13,9 +17,8 @@ import vertx.web.sample.verticles.product.ProductVerticle;
 public class VertxWebMainVerticle extends AbstractVerticle {
 
     @Override
-    public void start() {
+    public void start(Future<Void> done) {
         vertx.deployVerticle(new ProductVerticle());
         vertx.deployVerticle(new HttpClientVerticle());
     }
-
 }

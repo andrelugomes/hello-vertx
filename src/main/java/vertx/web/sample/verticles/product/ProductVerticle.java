@@ -25,7 +25,7 @@ public class ProductVerticle extends AbstractVerticle {
         router.put("/products/:productID").handler(ProductHandler::addProduct);
         router.get("/products").handler(ProductHandler::listProducts);
 
-        vertx.createHttpServer().requestHandler(router::accept).listen(8080);
+        vertx.createHttpServer().requestHandler(router::accept).listen(8081);
     }
 
 }
