@@ -1,23 +1,48 @@
-# VertX
+# Repo for Vert.x POCs
 
-## Jar
-### build:
+## Core Sample
+
+### build
 ```
 mvn clean package
 ```
 
-### run:
+### run
+```
+mvn compile vertx:run
+```
+OR
+```
+java -jar target/core-sample-1.0.jar
+```
+
+### Docker
+#### build
+```
+docker build -t br.com/vertx .
+```
+
+#### run
+```
+docker run -it -p 8080:8080 br.com/vertx
+```
+
+## Web Sample
+```
+mvn clean package
+```
 ```
 java -jar target/vertx-1.0-fat.jar
 ```
 
-## Docker
-### build:
+## Web Client
 ```
- docker build -t br.com.s2it/vertx .
+mvn clean package
 ```
-
-### run:
 ```
- docker run -it -p 8080:8080 br.com.s2it/vertx
+mvn compile vertx:run
+```
+OR
+```
+java -jar target/web-client-1.0.jar
 ```
