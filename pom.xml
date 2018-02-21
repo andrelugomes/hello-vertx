@@ -10,6 +10,7 @@
       <module>web-client</module>
       <module>core-sample</module>
     <module>rx-java</module>
+      <module>circuit-break</module>
   </modules>
   <packaging>pom</packaging>
   <properties>
